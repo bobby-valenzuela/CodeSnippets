@@ -1,3 +1,5 @@
+# Use this to test connecting to ExchangeOnline and MicrosoftGraph via PowerShell
+
 Function Test-O365Permissions {
 
     [CmdletBinding()]
