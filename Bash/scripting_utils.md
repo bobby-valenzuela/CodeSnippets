@@ -1,6 +1,14 @@
+ Bash Scripting Utils
+----------------------
 
+Contents:
 1. [Permissions](#permissions)
 2. [File Manipulation](#file-permissions)
+3. [Numbers and Arithmetic](#numbers-and-arithmetic)
+4. [Programs and Packages](#programs-and-packages)
+5. [Printing and Formatting Output](#printing-and-formatting-output)
+6. [Processes and Services](#processes-and-services)
+
 
 #  Permissions
 
@@ -20,26 +28,32 @@ find . -maxdepth 1 -type f -exec mv '{}' '{}.sh' \;
 <br />
 
 __Cut file in half - keep the latter half__
+```bash
 half_file(){
     LINE_COUNT=$(wc -l ${1} 2> /dev/null | cut -d " " -f1)
     LINE_COUNT_HALF=$((LINE_COUNT/2))
     [[ ${LINE_COUNT_HALF} -gt 0 ]] && sed -in "1,${LINE_COUNT_HALF}d" ${1}
 }
+```
 
 
-# **********************************************************
-#           NUMBERS AND ARITHMETIC
-# **********************************************************
+# Numbers and Arithmetic
 
-# Determine numeric parity (even/odd)
+__Determine numeric parity (even/odd)__
+```bash
 even_or_odd()
 {
     integertest='^[0-9]+$'
     [[ ! $1 =~ $integertest ]] && echo "Not an integer!" && return 1
     [[ $(( $1 % 2 )) == 0 ]] && echo "Even" || echo "Odd"
 }
+```
 
-# Validate IP
+<br />
+
+
+__Validate IP__
+```bash
 CNC_IP_SAVED=0
 
 while [[ ${CNC_IP_SAVED} -ne 1 ]] 
@@ -54,97 +68,90 @@ do
 done
 
 echo "Saved: ${CNC_IP}"
+```
+
+<br />
 
 
+# Programs and Packages
 
-
-# **********************************************************
-#           PROGRAMS AND PACKAGES
-# **********************************************************
-
-# Determin whether we're using netstat vs ss
+__Determine whether we're using netstat vs ss__
+```bash
 using_netstat=$({ netstat --version &> /dev/null && echo 1 ; } || echo 0)
+```
+
+<br />
+
+# Printing and Formatting Output
 
 
-# **********************************************************
-#           PRINTING AND FORMATTING
-# **********************************************************
+___ANSI Escape Codes__
+```
+Black        0;30     Dark Gray     1;30
+Red          0;31     Light Red     1;31
+Green        0;32     Light Green   1;32
+Brown/Orange 0;33     Yellow        1;33
+Blue         0;34     Light Blue    1;34
+Purple       0;35     Light Purple  1;35
+Cyan         0;36     Light Cyan    1;36
+Light Gray   0;37     White         1;37
+```
 
-# ___ANSI Escape Codes___
-# Black        0;30     Dark Gray     1;30
-# Red          0;31     Light Red     1;31
-# Green        0;32     Light Green   1;32
-# Brown/Orange 0;33     Yellow        1;33
-# Blue         0;34     Light Blue    1;34
-# Purple       0;35     Light Purple  1;35
-# Cyan         0;36     Light Cyan    1;36
-# Light Gray   0;37     White         1;37
+<br />
 
-
-# Get count of characters wide the terminal is
+__Get count of characters wide the terminal is__
+```bash
 COLUMNS=$(tput cols)
+```
 
+<br />
+
+__Printing Headers__
+```bash
 prHeader(){
 
     for each in $(seq 1 $COLUMNS)
-
     do
-
-    echo -n $1
-
+        echo -n $1
     done
-
 }
+
 prHeaderLeftHalf(){
     for each in $(seq 1 $(($COLUMNS/2)))
-
     do
-
-      echo -n $1
-
+          echo -n $1
     done
-
     echo
-
 }
 
 prHeaderLeftThird(){
     for each in $(seq 1 $(($COLUMNS/3)))
-
     do
-
-      echo -n $1
-
+          echo -n $1
     done
-
     echo
-
 }
 
 prHeaderLeftQuarter(){
     for each in $(seq 1 $(($COLUMNS/4)))
-
     do
-
-      echo -n $1
-
+          echo -n $1
     done
-
     echo
-
 }
 
 prtxtCentre(){
 
-title=$1
-
-printf "%*s\n" $(((${#title}+$COLUMNS)/2)) "$title"
+    title=$1
+    printf "%*s\n" $(((${#title}+$COLUMNS)/2)) "$title"
 
 }
+```
 
+<br />
 
-
-# print colored text
+__print colored text__
+```bash
 print_colored()
 {
 
@@ -169,15 +176,16 @@ print_colored()
 }
 
 # Examples
-# print_colored 'red' 'my message'
-# print_colored 'red' 'my message\n\n' 'no'
+print_colored 'red' 'my message'
+print_colored 'red' 'my message\n\n' 'no'
+```
 
+<br />
 
-# **********************************************************
-#           PROCESSES AND SERVICES
-# **********************************************************
+# Processes and Services
 
-# Check if a service/process is already running - if not start it up (checks every 60s)
+__Check if a service/process is already running - if not start it up (checks every 60s)__
+```bash
 while :
 do
 
@@ -188,3 +196,4 @@ do
     { [[ "${already_running,,}" =~ perl ]] && echo "Hive API Running" ; } || { echo "Not running. Starting Up...." && $(which perl) /home/control-io/www/HiveAPI/inde$
     sleep 60
 done
+```
