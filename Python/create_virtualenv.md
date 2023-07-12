@@ -1,4 +1,4 @@
-## [Method 1] Setup your virtual environment
+## Method 1: Setup your virtual environment
 Make sure you have the virtual environment package installed:
 ```bash
 sudo apt install python3.8-venv
@@ -27,7 +27,7 @@ source env/bin/activate
 
 <br />
 
-## [Method 2] Setup your virtual environment
+## Method 2]: Setup your virtual environment
 _Make sure you have the virtual environment package installed_
 ```bash
 sudo apt install python3-dev libffi-dev build-essential virtualenvwrapper -y
