@@ -18,7 +18,7 @@ Modified from: https://catonmat.net/ftp/perl1line.txt
 
 # FILE SPACING
 
-### Double space a file
+#### Double space a file
 ```bash
 perl -pe '$\="\n"'
 ```
@@ -55,7 +55,7 @@ perl -nE 'say'
 
 
 
-### Double space a file, except the blank lines
+#### Double space a file, except the blank lines
 ```bash
 perl -pe '$_ .= "\n" unless /^$/'
 ```
@@ -71,7 +71,7 @@ perl -pe '$_ .= "\n" if /\S/'
 
 
 
-### Triple space a file
+#### Triple space a file
 ```bash
 perl -pe '$\="\n\n"'
 ```
@@ -87,7 +87,7 @@ perl -pe '$_.="\n\n"'
 
 
 
-### N-space a file
+#### N-space a file
 ```bash
 perl -pe '$_.="\n"x7'
 ```
@@ -96,7 +96,7 @@ perl -pe '$_.="\n"x7'
 
 
 
-### Add a blank line before every line
+#### Add a blank line before every line
 ```bash
 perl -pe 's//\n/'
 ```
@@ -105,7 +105,7 @@ perl -pe 's//\n/'
 
 
 
-### Remove all blank lines
+#### Remove all blank lines
 ```bash
 perl -ne 'print unless /^$/'
 ```
@@ -128,7 +128,7 @@ perl -ne 'print if /\S/'
 
 
 
-### Remove all consecutive blank lines, leaving just one
+#### Remove all consecutive blank lines, leaving just one
 ```bash
 perl -00 -pe ''
 ```
@@ -144,7 +144,7 @@ perl -00pe0
 
 
 
-### Compress/expand all blank lines into N consecutive ones
+#### Compress/expand all blank lines into N consecutive ones
 ```bash
 perl -00 -pe '$_.="\n"x4'
 ```
@@ -153,7 +153,7 @@ perl -00 -pe '$_.="\n"x4'
 
 
 
-### Fold a file so that every set of 10 lines becomes one tab-separated line
+#### Fold a file so that every set of 10 lines becomes one tab-separated line
 ```bash
 perl -lpe '$\ = $. % 10 ? "\t" : "\n"'
 ```
@@ -165,7 +165,7 @@ perl -lpe '$\ = $. % 10 ? "\t" : "\n"'
 
 # LINE NUMBERING
 
-### Number all lines in a file
+#### Number all lines in a file
 ```bash
 perl -pe '$_ = "$. $_"'
 ```
@@ -174,7 +174,7 @@ perl -pe '$_ = "$. $_"'
 
 
 
-### Number only non-empty lines in a file
+#### Number only non-empty lines in a file
 ```bash
 perl -pe '$_ = ++$a." $_" if /./'
 ```
@@ -183,7 +183,7 @@ perl -pe '$_ = ++$a." $_" if /./'
 
 
 
-### Number and print only non-empty lines in a file (drop empty lines)
+#### Number and print only non-empty lines in a file (drop empty lines)
 ```bash
 perl -ne 'print ++$a." $_" if /./'
 ```
@@ -192,7 +192,7 @@ perl -ne 'print ++$a." $_" if /./'
 
 
 
-### Number all lines but print line numbers only non-empty lines
+#### Number all lines but print line numbers only non-empty lines
 ```bash
 perl -pe '$_ = "$. $_" if /./'
 ```
@@ -201,7 +201,7 @@ perl -pe '$_ = "$. $_" if /./'
 
 
 
-### Number only lines that match a pattern, print others unmodified
+#### Number only lines that match a pattern, print others unmodified
 ```bash
 perl -pe '$_ = ++$a." $_" if /regex/'
 ```
@@ -210,7 +210,7 @@ perl -pe '$_ = ++$a." $_" if /regex/'
 
 
 
-### Number and print only lines that match a pattern
+#### Number and print only lines that match a pattern
 ```bash
 perl -ne 'print ++$a." $_" if /regex/'
 ```
@@ -219,7 +219,7 @@ perl -ne 'print ++$a." $_" if /regex/'
 
 
 
-### Number all lines, but print line numbers only for lines that match a pattern
+#### Number all lines, but print line numbers only for lines that match a pattern
 ```bash
 perl -pe '$_ = "$. $_" if /regex/'
 ```
@@ -228,7 +228,7 @@ perl -pe '$_ = "$. $_" if /regex/'
 
 
 
-### Number all lines in a file using a custom format (emulate cat -n)
+#### Number all lines in a file using a custom format (emulate cat -n)
 ```bash
 perl -ne 'printf "%-5d %s", $., $_'
 ```
@@ -237,7 +237,7 @@ perl -ne 'printf "%-5d %s", $., $_'
 
 
 
-### Print the total number of lines in a file (emulate wc -l)
+#### Print the total number of lines in a file (emulate wc -l)
 ```bash
 perl -lne 'END { print $. }'
 ```
@@ -281,7 +281,7 @@ perl -nE '}{say $.'
 
 
 
-### Print the number of non-empty lines in a file
+#### Print the number of non-empty lines in a file
 ```bash
 perl -le 'print scalar(grep{/./}<>)'
 ```
@@ -311,7 +311,7 @@ perl -E 'say~~grep/./,<>'
 
 
 
-### Print the number of empty lines in a file
+#### Print the number of empty lines in a file
 ```bash
 perl -lne '$a++ if /^$/; END {print $a+0}'
 ```
@@ -341,7 +341,7 @@ perl -E 'say~~grep{/^$/}<>'
 
 
 
-### Print the number of lines in a file that match a pattern (emulate grep -c)
+#### Print the number of lines in a file that match a pattern (emulate grep -c)
 ```bash
 perl -lne '$a++ if /regex/; END {print $a+0}'
 ```
@@ -361,7 +361,7 @@ perl -nE '$a++ if /regex/; END {say $a+0}'
 # CALCULATIONS
 
 
-### Check if a number is a prime
+#### Check if a number is a prime
 ```bash
 perl -lne '(1x$_) !~ /^1?$|^(11+?)\1+$/ && print "$_ is prime"'
 ```
@@ -370,7 +370,7 @@ perl -lne '(1x$_) !~ /^1?$|^(11+?)\1+$/ && print "$_ is prime"'
 
 
 
-### Print the sum of all the fields on a line
+#### Print the sum of all the fields on a line
 ```bash
 perl -MList::Util=sum -alne 'print sum @F'
 ```
@@ -379,7 +379,7 @@ perl -MList::Util=sum -alne 'print sum @F'
 
 
 
-### Print the sum of all the fields on all lines
+#### Print the sum of all the fields on all lines
 ```bash
 perl -MList::Util=sum -alne 'push @S,@F; END { print sum @S }'
 ```
@@ -395,7 +395,7 @@ perl -MList::Util=sum -alne '$s += sum @F; END { print $s }'
 
 
 
-### Shuffle all fields on a line
+#### Shuffle all fields on a line
 ```bash
 perl -MList::Util=shuffle -alne 'print "@{[shuffle @F]}"'
 ```
@@ -411,7 +411,7 @@ perl -MList::Util=shuffle -alne 'print join " ", shuffle @F'
 
 
 
-### Find the minimum element on a line
+#### Find the minimum element on a line
 ```bash
 perl -MList::Util=min -alne 'print min @F'
 ```
@@ -420,7 +420,7 @@ perl -MList::Util=min -alne 'print min @F'
 
 
 
-### Find the minimum element over all the lines
+#### Find the minimum element over all the lines
 ```bash
 perl -MList::Util=min -alne '@M = (@M, @F); END { print min @M }'
 ```
@@ -436,7 +436,7 @@ perl -MList::Util=min -alne '$min = min @F; $rmin = $min unless defined $rmin &&
 
 
 
-### Find the maximum element on a line
+#### Find the maximum element on a line
 ```bash
 perl -MList::Util=max -alne 'print max @F'
 ```
@@ -445,7 +445,7 @@ perl -MList::Util=max -alne 'print max @F'
 
 
 
-### Find the maximum element over all the lines
+#### Find the maximum element over all the lines
 ```bash
 perl -MList::Util=max -alne '@M = (@M, @F); END { print max @M }'
 ```
@@ -454,7 +454,7 @@ perl -MList::Util=max -alne '@M = (@M, @F); END { print max @M }'
 
 
 
-### Replace each field with its absolute value
+#### Replace each field with its absolute value
 ```bash
 perl -alne 'print "@{[map { abs } @F]}"'
 ```
@@ -463,7 +463,7 @@ perl -alne 'print "@{[map { abs } @F]}"'
 
 
 
-### Find the total number of fields (words) on each line
+#### Find the total number of fields (words) on each line
 ```bash
 perl -alne 'print scalar @F'
 ```
@@ -472,7 +472,7 @@ perl -alne 'print scalar @F'
 
 
 
-### Print the total number of fields (words) on each line followed by the line
+#### Print the total number of fields (words) on each line followed by the line
 ```bash
 perl -alne 'print scalar @F, " $_"'
 ```
@@ -481,7 +481,7 @@ perl -alne 'print scalar @F, " $_"'
 
 
 
-### Find the total number of fields (words) on all lines
+#### Find the total number of fields (words) on all lines
 ```bash
 perl -alne '$t += @F; END { print $t}'
 ```
@@ -490,7 +490,7 @@ perl -alne '$t += @F; END { print $t}'
 
 
 
-### Print the total number of fields that match a pattern
+#### Print the total number of fields that match a pattern
 ```bash
 perl -alne 'map { /regex/ && $t++ } @F; END { print $t }'
 ```
@@ -513,7 +513,7 @@ perl -alne '$t += grep /regex/, @F; END { print $t }'
 
 
 
-### Print the total number of lines that match a pattern
+#### Print the total number of lines that match a pattern
 ```bash
 perl -lne '/regex/ && $t++; END { print $t }'
 ```
@@ -522,7 +522,7 @@ perl -lne '/regex/ && $t++; END { print $t }'
 
 
 
-### Print the number PI to n decimal places
+#### Print the number PI to n decimal places
 ```bash
 perl -Mbignum=bpi -le 'print bpi(n)'
 ```
@@ -531,7 +531,7 @@ perl -Mbignum=bpi -le 'print bpi(n)'
 
 
 
-### Print the number PI to 39 decimal places
+#### Print the number PI to 39 decimal places
 ```bash
 perl -Mbignum=PI -le 'print PI'
 ```
@@ -540,7 +540,7 @@ perl -Mbignum=PI -le 'print PI'
 
 
 
-### Print the number E to n decimal places
+#### Print the number E to n decimal places
 ```bash
 perl -Mbignum=bexp -le 'print bexp(1,n+1)'
 ```
@@ -549,7 +549,7 @@ perl -Mbignum=bexp -le 'print bexp(1,n+1)'
 
 
 
-### Print the number E to 39 decimal places
+#### Print the number E to 39 decimal places
 ```bash
 perl -Mbignum=e -le 'print e'
 ```
@@ -558,7 +558,7 @@ perl -Mbignum=e -le 'print e'
 
 
 
-### Print UNIX time (seconds since Jan 1, 1970, 00:00:00 UTC)
+#### Print UNIX time (seconds since Jan 1, 1970, 00:00:00 UTC)
 ```bash
 perl -le 'print time'
 ```
@@ -567,7 +567,7 @@ perl -le 'print time'
 
 
 
-### Print GMT (Greenwich Mean Time) and local computer time
+#### Print GMT (Greenwich Mean Time) and local computer time
 ```bash
 perl -le 'print scalar gmtime'
 ```
@@ -583,7 +583,7 @@ perl -le 'print scalar localtime'
 
 
 
-### Print local computer time in H:M:S format
+#### Print local computer time in H:M:S format
 ```bash
 perl -le 'print join ":", (localtime)[2,1,0]'
 ```
@@ -592,7 +592,7 @@ perl -le 'print join ":", (localtime)[2,1,0]'
 
 
 
-### Print yesterday's date
+#### Print yesterday's date
 ```bash
 perl -MPOSIX -le '@now = localtime; $now[3] -= 1; print scalar localtime mktime @now'
 ```
@@ -601,7 +601,7 @@ perl -MPOSIX -le '@now = localtime; $now[3] -= 1; print scalar localtime mktime 
 
 
 
-### Print date 14 months, 9 days and 7 seconds ago
+#### Print date 14 months, 9 days and 7 seconds ago
 ```bash
 perl -MPOSIX -le '@now = localtime; $now[0] -= 7; $now[4] -= 14; $now[7] -= 9; print scalar localtime mktime @now'
 ```
@@ -610,11 +610,11 @@ perl -MPOSIX -le '@now = localtime; $now[0] -= 7; $now[4] -= 14; $now[7] -= 9; p
 
 
 
-### Prepend timestamps to stdout (GMT, localtime)
+#### Prepend timestamps to stdout (GMT, localtime)
 tail -f logfile | perl -ne 'print scalar gmtime," ",$_'
 tail -f logfile | perl -ne 'print scalar localtime," ",$_'
 
-### Calculate factorial of 5
+#### Calculate factorial of 5
 ```bash
 perl -MMath::BigInt -le 'print Math::BigInt->new(5)->bfac()'
 ```
@@ -630,7 +630,7 @@ perl -le '$f = 1; $f *= $_ for 1..5; print $f'
 
 
 
-### Calculate greatest common divisor (GCM)
+#### Calculate greatest common divisor (GCM)
 ```bash
 perl -MMath::BigInt=bgcd -le 'print bgcd(@list_of_numbers)'
 ```
@@ -639,7 +639,7 @@ perl -MMath::BigInt=bgcd -le 'print bgcd(@list_of_numbers)'
 
 
 
-### Calculate GCM of numbers 20 and 35 using Euclid's algorithm
+#### Calculate GCM of numbers 20 and 35 using Euclid's algorithm
 ```bash
 perl -le '$n = 20; $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $m'
 ```
@@ -648,7 +648,7 @@ perl -le '$n = 20; $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $m'
 
 
 
-### Calculate least common multiple (LCM) of numbers 35, 20 and 8
+#### Calculate least common multiple (LCM) of numbers 35, 20 and 8
 ```bash
 perl -MMath::BigInt=blcm -le 'print blcm(35,20,8)'
 ```
@@ -657,7 +657,7 @@ perl -MMath::BigInt=blcm -le 'print blcm(35,20,8)'
 
 
 
-### Calculate LCM of 20 and 35 using Euclid's formula: n*m/gcd(n,m)
+#### Calculate LCM of 20 and 35 using Euclid's formula: n*m/gcd(n,m)
 ```bash
 perl -le '$a = $n = 20; $b = $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $a*$b/$m'
 ```
@@ -666,7 +666,7 @@ perl -le '$a = $n = 20; $b = $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $a*$b
 
 
 
-### Generate 10 random numbers between 5 and 15 (excluding 15)
+#### Generate 10 random numbers between 5 and 15 (excluding 15)
 ```bash
 perl -le '$n=10; $min=5; $max=15; $, = " "; print map { int(rand($max-$min))+$min } 1..$n'
 ```
@@ -675,7 +675,7 @@ perl -le '$n=10; $min=5; $max=15; $, = " "; print map { int(rand($max-$min))+$mi
 
 
 
-### Find and print all permutations of a list
+#### Find and print all permutations of a list
 ```bash
 perl -MAlgorithm::Permute -le '$l = [1,2,3,4,5]; $p = Algorithm::Permute->new($l); print @r while @r = $p->next'
 ```
@@ -684,7 +684,7 @@ perl -MAlgorithm::Permute -le '$l = [1,2,3,4,5]; $p = Algorithm::Permute->new($l
 
 
 
-### Generate the power set
+#### Generate the power set
 ```bash
 perl -MList::PowerSet=powerset -le '@l = (1,2,3,4,5); for (@{powerset(@l)}) { print "@$_" }'
 ```
@@ -693,7 +693,7 @@ perl -MList::PowerSet=powerset -le '@l = (1,2,3,4,5); for (@{powerset(@l)}) { pr
 
 
 
-### Convert an IP address to unsigned integer
+#### Convert an IP address to unsigned integer
 ```bash
 perl -le '$i=3; $u += ($_<<8*$i--) for "127.0.0.1" =~ /(\d+)/g; print $u'
 ```
@@ -723,7 +723,7 @@ perl -MSocket -le 'print unpack("N", inet_aton("127.0.0.1"))'
 
 
 
-### Convert an unsigned integer to an IP address
+#### Convert an unsigned integer to an IP address
 ```bash
 perl -MSocket -le 'print inet_ntoa(pack("N", 2130706433))'
 ```
@@ -750,7 +750,7 @@ perl -le '$ip = 2130706433; $, = "."; print map { (($ip>>8*($_))&0xFF) } reverse
 # STRING CREATION AND ARRAY CREATION
 
 
-### Generate and print the alphabet
+#### Generate and print the alphabet
 ```bash
 perl -le 'print a..z'
 ```
@@ -780,7 +780,7 @@ perl -le 'print join ",", ("a".."z")'
 
 
 
-### Generate and print all the strings from "a" to "zz"
+#### Generate and print all the strings from "a" to "zz"
 ```bash
 perl -le 'print ("a".."zz")'
 ```
@@ -796,10 +796,10 @@ perl -le 'print "aa".."zz"'
 
 
 
-### Create a hex lookup table
+#### Create a hex lookup table
 @hex = (0..9, "a".."f")
 
-### Convert a decimal number to hex using @hex lookup table
+#### Convert a decimal number to hex using @hex lookup table
 ```bash
 perl -le '$num = 255; @hex = (0..9, "a".."f"); while ($num) { $s = $hex[($num%16)&15].$s; $num = int $num/16 } print $s'
 ```
@@ -822,7 +822,7 @@ perl -le '$num = "ff"; print hex $num'
 
 
 
-### Generate a random 8 character password
+#### Generate a random 8 character password
 ```bash
 perl -le 'print map { ("a".."z")[rand 26] } 1..8'
 ```
@@ -838,7 +838,7 @@ perl -le 'print map { ("a".."z", 0..9)[rand 36] } 1..8'
 
 
 
-### Create a string of specific length
+#### Create a string of specific length
 ```bash
 perl -le 'print "a"x50'
 ```
@@ -847,7 +847,7 @@ perl -le 'print "a"x50'
 
 
 
-### Create a repeated list of elements
+#### Create a repeated list of elements
 ```bash
 perl -le '@list = (1,2)x20; print "@list"'
 ```
@@ -856,14 +856,14 @@ perl -le '@list = (1,2)x20; print "@list"'
 
 
 
-### Create an array from a string
+#### Create an array from a string
 @months = split ' ', "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
 @months = qw/Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec/
 
-### Create a string from an array
+#### Create a string from an array
 @stuff = ("hello", 0..9, "world"); $string = join '-', @stuff
 
-### Find the numeric values for characters in the string
+#### Find the numeric values for characters in the string
 ```bash
 perl -le 'print join ", ", map { ord } split //, "hello world"'
 ```
@@ -872,7 +872,7 @@ perl -le 'print join ", ", map { ord } split //, "hello world"'
 
 
 
-### Convert a list of numeric ASCII values into a string
+#### Convert a list of numeric ASCII values into a string
 ```bash
 perl -le '@ascii = (99, 111, 100, 105, 110, 103); print pack("C*", @ascii)'
 ```
@@ -888,7 +888,7 @@ perl -le '@ascii = (99, 111, 100, 105, 110, 103); print map { chr } @ascii'
 
 
 
-### Generate an array with odd numbers from 1 to 100
+#### Generate an array with odd numbers from 1 to 100
 ```bash
 perl -le '@odd = grep {$_ % 2 == 1} 1..100; print "@odd"'
 ```
@@ -904,7 +904,7 @@ perl -le '@odd = grep { $_ & 1 } 1..100; print "@odd"'
 
 
 
-### Generate an array with even numbers from 1 to 100
+#### Generate an array with even numbers from 1 to 100
 ```bash
 perl -le '@even = grep {$_ % 2 == 0} 1..100; print "@even"'
 ```
@@ -913,7 +913,7 @@ perl -le '@even = grep {$_ % 2 == 0} 1..100; print "@even"'
 
 
 
-### Find the length of the string
+#### Find the length of the string
 ```bash
 perl -le 'print length "one-liners are great"'
 ```
@@ -922,7 +922,7 @@ perl -le 'print length "one-liners are great"'
 
 
 
-### Find the number of elements in an array
+#### Find the number of elements in an array
 ```bash
 perl -le '@array = ("a".."z"); print scalar @array'
 ```
@@ -942,10 +942,10 @@ perl -le '@array = ("a".."z"); print $#array + 1'
 # TEXT CONVERSION AND SUBSTITUTION
 
 
-### ROT13 a string
+#### ROT13 a string
 'y/A-Za-z/N-ZA-Mn-za-m/'
 
-### ROT 13 a file
+#### ROT 13 a file
 ```bash
 perl -lpe 'y/A-Za-z/N-ZA-Mn-za-m/' file
 ```
@@ -954,7 +954,7 @@ perl -lpe 'y/A-Za-z/N-ZA-Mn-za-m/' file
 
 
 
-### Base64 encode a string
+#### Base64 encode a string
 ```bash
 perl -MMIME::Base64 -e 'print encode_base64("string")'
 ```
@@ -970,7 +970,7 @@ perl -MMIME::Base64 -0777 -ne 'print encode_base64($_)' file
 
 
 
-### Base64 decode a string
+#### Base64 decode a string
 ```bash
 perl -MMIME::Base64 -le 'print decode_base64("base64string")'
 ```
@@ -986,7 +986,7 @@ perl -MMIME::Base64 -ne 'print decode_base64($_)' file
 
 
 
-### URL-escape a string
+#### URL-escape a string
 ```bash
 perl -MURI::Escape -le 'print uri_escape($string)'
 ```
@@ -995,7 +995,7 @@ perl -MURI::Escape -le 'print uri_escape($string)'
 
 
 
-### URL-unescape a string
+#### URL-unescape a string
 ```bash
 perl -MURI::Escape -le 'print uri_unescape($string)'
 ```
@@ -1004,7 +1004,7 @@ perl -MURI::Escape -le 'print uri_unescape($string)'
 
 
 
-### HTML-encode a string
+#### HTML-encode a string
 ```bash
 perl -MHTML::Entities -le 'print encode_entities($string)'
 ```
@@ -1013,7 +1013,7 @@ perl -MHTML::Entities -le 'print encode_entities($string)'
 
 
 
-### HTML-decode a string
+#### HTML-decode a string
 ```bash
 perl -MHTML::Entities -le 'print decode_entities($string)'
 ```
@@ -1022,7 +1022,7 @@ perl -MHTML::Entities -le 'print decode_entities($string)'
 
 
 
-### Convert all text to uppercase
+#### Convert all text to uppercase
 ```bash
 perl -nle 'print uc'
 ```
@@ -1045,7 +1045,7 @@ perl -nle 'print "\U$_"'
 
 
 
-### Convert all text to lowercase
+#### Convert all text to lowercase
 ```bash
 perl -nle 'print lc'
 ```
@@ -1068,7 +1068,7 @@ perl -nle 'print "\L$_"'
 
 
 
-### Uppercase only the first word of each line
+#### Uppercase only the first word of each line
 ```bash
 perl -nle 'print ucfirst lc'
 ```
@@ -1084,7 +1084,7 @@ perl -nle 'print "\u\L$_"'
 
 
 
-### Invert the letter case
+#### Invert the letter case
 ```bash
 perl -ple 'y/A-Za-z/a-zA-Z/'
 ```
@@ -1093,7 +1093,7 @@ perl -ple 'y/A-Za-z/a-zA-Z/'
 
 
 
-### Camel case each line
+#### Camel case each line
 ```bash
 perl -ple 's/(\w+)/\u$1/g'
 ```
@@ -1109,7 +1109,7 @@ perl -ple 's/(?<![\'])(\w+)/\u\1/g'
 
 
 
-### Strip leading whitespace (spaces, tabs) from the beginning of each line
+#### Strip leading whitespace (spaces, tabs) from the beginning of each line
 ```bash
 perl -ple 's/^[ \t]+//'
 ```
@@ -1125,7 +1125,7 @@ perl -ple 's/^\s+//'
 
 
 
-### Strip trailing whitespace (space, tabs) from the end of each line
+#### Strip trailing whitespace (space, tabs) from the end of each line
 ```bash
 perl -ple 's/[ \t]+$//'
 ```
@@ -1134,7 +1134,7 @@ perl -ple 's/[ \t]+$//'
 
 
 
-### Strip whitespace from the beginning and end of each line
+#### Strip whitespace from the beginning and end of each line
 ```bash
 perl -ple 's/^[ \t]+|[ \t]+$//g'
 ```
@@ -1143,7 +1143,7 @@ perl -ple 's/^[ \t]+|[ \t]+$//g'
 
 
 
-### Convert UNIX newlines to DOS/Windows newlines
+#### Convert UNIX newlines to DOS/Windows newlines
 ```bash
 perl -pe 's|\n|\r\n|'
 ```
@@ -1152,7 +1152,7 @@ perl -pe 's|\n|\r\n|'
 
 
 
-### Convert DOS/Windows newlines to UNIX newlines
+#### Convert DOS/Windows newlines to UNIX newlines
 ```bash
 perl -pe 's|\r\n|\n|'
 ```
@@ -1161,7 +1161,7 @@ perl -pe 's|\r\n|\n|'
 
 
 
-### Convert UNIX newlines to Mac newlines
+#### Convert UNIX newlines to Mac newlines
 ```bash
 perl -pe 's|\n|\r|'
 ```
@@ -1170,7 +1170,7 @@ perl -pe 's|\n|\r|'
 
 
 
-### Substitute (find and replace) "foo" with "bar" on each line
+#### Substitute (find and replace) "foo" with "bar" on each line
 ```bash
 perl -pe 's/foo/bar/'
 ```
@@ -1179,7 +1179,7 @@ perl -pe 's/foo/bar/'
 
 
 
-### Substitute (find and replace) all "foo"s with "bar" on each line
+#### Substitute (find and replace) all "foo"s with "bar" on each line
 ```bash
 perl -pe 's/foo/bar/g'
 ```
@@ -1188,7 +1188,7 @@ perl -pe 's/foo/bar/g'
 
 
 
-### Substitute (find and replace) "foo" with "bar" on lines that match "baz"
+#### Substitute (find and replace) "foo" with "bar" on lines that match "baz"
 ```bash
 perl -pe '/baz/ && s/foo/bar/'
 ```
@@ -1197,7 +1197,7 @@ perl -pe '/baz/ && s/foo/bar/'
 
 
 
-### Binary patch a file (find and replace a given array of bytes as hex numbers)
+#### Binary patch a file (find and replace a given array of bytes as hex numbers)
 ```bash
 perl -pi -e 's/\x89\xD8\x48\x8B/\x90\x90\x48\x8B/g' file
 ```
@@ -1210,7 +1210,7 @@ perl -pi -e 's/\x89\xD8\x48\x8B/\x90\x90\x48\x8B/g' file
 # SELECTIVE PRINTING AND DELETING OF CERTAIN LINES
 
 
-### Print the first line of a file (emulate head -1)
+#### Print the first line of a file (emulate head -1)
 ```bash
 perl -ne 'print; exit'
 ```
@@ -1219,7 +1219,7 @@ perl -ne 'print; exit'
 
 
 
-### Print the first 10 lines of a file (emulate head -10)
+#### Print the first 10 lines of a file (emulate head -10)
 ```bash
 perl -ne 'print if $. <= 10'
 ```
@@ -1242,7 +1242,7 @@ perl -ne 'print if 1..10'
 
 
 
-### Print the last line of a file (emulate tail -1)
+#### Print the last line of a file (emulate tail -1)
 ```bash
 perl -ne '$last = $_; END { print $last }'
 ```
@@ -1258,7 +1258,7 @@ perl -ne 'print if eof'
 
 
 
-### Print the last 10 lines of a file (emulate tail -10)
+#### Print the last 10 lines of a file (emulate tail -10)
 ```bash
 perl -ne 'push @a, $_; @a = @a[@a-10..$#a]; END { print @a }'
 ```
@@ -1267,7 +1267,7 @@ perl -ne 'push @a, $_; @a = @a[@a-10..$#a]; END { print @a }'
 
 
 
-### Print only lines that match a regular expression
+#### Print only lines that match a regular expression
 ```bash
 perl -ne '/regex/ && print'
 ```
@@ -1276,7 +1276,7 @@ perl -ne '/regex/ && print'
 
 
 
-### Print only lines that do not match a regular expression
+#### Print only lines that do not match a regular expression
 ```bash
 perl -ne '!/regex/ && print'
 ```
@@ -1285,7 +1285,7 @@ perl -ne '!/regex/ && print'
 
 
 
-### Print the line before a line that matches a regular expression
+#### Print the line before a line that matches a regular expression
 ```bash
 perl -ne '/regex/ && $last && print $last; $last = $_'
 ```
@@ -1294,7 +1294,7 @@ perl -ne '/regex/ && $last && print $last; $last = $_'
 
 
 
-### Print the line after a line that matches a regular expression
+#### Print the line after a line that matches a regular expression
 ```bash
 perl -ne 'if ($p) { print; $p = 0 } $p++ if /regex/'
 ```
@@ -1303,7 +1303,7 @@ perl -ne 'if ($p) { print; $p = 0 } $p++ if /regex/'
 
 
 
-### Print lines that match regex AAA and regex BBB in any order
+#### Print lines that match regex AAA and regex BBB in any order
 ```bash
 perl -ne '/AAA/ && /BBB/ && print'
 ```
@@ -1312,7 +1312,7 @@ perl -ne '/AAA/ && /BBB/ && print'
 
 
 
-### Print lines that don't match match regexes AAA and BBB
+#### Print lines that don't match match regexes AAA and BBB
 ```bash
 perl -ne '!/AAA/ && !/BBB/ && print'
 ```
@@ -1321,7 +1321,7 @@ perl -ne '!/AAA/ && !/BBB/ && print'
 
 
 
-### Print lines that match regex AAA followed by regex BBB followed by CCC
+#### Print lines that match regex AAA followed by regex BBB followed by CCC
 ```bash
 perl -ne '/AAA.*BBB.*CCC/ && print'
 ```
@@ -1330,7 +1330,7 @@ perl -ne '/AAA.*BBB.*CCC/ && print'
 
 
 
-### Print lines that are 80 chars or longer
+#### Print lines that are 80 chars or longer
 ```bash
 perl -ne 'print if length >= 80'
 ```
@@ -1339,7 +1339,7 @@ perl -ne 'print if length >= 80'
 
 
 
-### Print lines that are less than 80 chars in length
+#### Print lines that are less than 80 chars in length
 ```bash
 perl -ne 'print if length < 80'
 ```
@@ -1348,7 +1348,7 @@ perl -ne 'print if length < 80'
 
 
 
-### Print only line 13
+#### Print only line 13
 ```bash
 perl -ne '$. == 13 && print && exit'
 ```
@@ -1357,7 +1357,7 @@ perl -ne '$. == 13 && print && exit'
 
 
 
-### Print all lines except line 27
+#### Print all lines except line 27
 ```bash
 perl -ne '$. != 27 && print'
 ```
@@ -1373,7 +1373,7 @@ perl -ne 'print if $. != 27'
 
 
 
-### Print only lines 13, 19 and 67
+#### Print only lines 13, 19 and 67
 ```bash
 perl -ne 'print if $. == 13 || $. == 19 || $. == 67'
 ```
@@ -1389,7 +1389,7 @@ perl -ne 'print if int($.) ~~ (13, 19, 67)'
 
 
 
-### Print all lines between two regexes (including lines that match regex)
+#### Print all lines between two regexes (including lines that match regex)
 ```bash
 perl -ne 'print if /regex1/../regex2/'
 ```
@@ -1398,7 +1398,7 @@ perl -ne 'print if /regex1/../regex2/'
 
 
 
-### Print all lines from line 17 to line 30
+#### Print all lines from line 17 to line 30
 ```bash
 perl -ne 'print if $. >= 17 && $. <= 30'
 ```
@@ -1421,7 +1421,7 @@ perl -ne 'print if grep { $_ == $. } 17..30'
 
 
 
-### Print the longest line
+#### Print the longest line
 ```bash
 perl -ne '$l = $_ if length($_) > length($l); END { print $l }'
 ```
@@ -1430,7 +1430,7 @@ perl -ne '$l = $_ if length($_) > length($l); END { print $l }'
 
 
 
-### Print the shortest line
+#### Print the shortest line
 ```bash
 perl -ne '$s = $_ if $. == 1; $s = $_ if length($_) < length($s); END { print $s }'
 ```
@@ -1439,7 +1439,7 @@ perl -ne '$s = $_ if $. == 1; $s = $_ if length($_) < length($s); END { print $s
 
 
 
-### Print all lines that contain a number
+#### Print all lines that contain a number
 ```bash
 perl -ne 'print if /\d/'
 ```
@@ -1448,7 +1448,7 @@ perl -ne 'print if /\d/'
 
 
 
-### Find all lines that contain only a number
+#### Find all lines that contain only a number
 ```bash
 perl -ne 'print if /^\d+$/'
 ```
@@ -1457,7 +1457,7 @@ perl -ne 'print if /^\d+$/'
 
 
 
-### Print all lines that contain only characters
+#### Print all lines that contain only characters
 ```bash
 perl -ne 'print if /^[[:alpha:]]+$/'
 ```
@@ -1466,7 +1466,7 @@ perl -ne 'print if /^[[:alpha:]]+$/'
 
 
 
-### Print every second line
+#### Print every second line
 ```bash
 perl -ne 'print if $. % 2'
 ```
@@ -1475,7 +1475,7 @@ perl -ne 'print if $. % 2'
 
 
 
-### Print every second line, starting the second line
+#### Print every second line, starting the second line
 ```bash
 perl -ne 'print if $. % 2 == 0'
 ```
@@ -1484,7 +1484,7 @@ perl -ne 'print if $. % 2 == 0'
 
 
 
-### Print all lines that repeat
+#### Print all lines that repeat
 ```bash
 perl -ne 'print if ++$a{$_} == 2'
 ```
@@ -1493,7 +1493,7 @@ perl -ne 'print if ++$a{$_} == 2'
 
 
 
-### Print all unique lines
+#### Print all unique lines
 ```bash
 perl -ne 'print unless $a{$_}++'
 ```
@@ -1502,7 +1502,7 @@ perl -ne 'print unless $a{$_}++'
 
 
 
-### Print the first field (word) of every line (emulate cut -f 1 -d ' ')
+#### Print the first field (word) of every line (emulate cut -f 1 -d ' ')
 ```bash
 perl -alne 'print $F[0]'
 ```
@@ -1515,66 +1515,66 @@ perl -alne 'print $F[0]'
 # HANDY REGULAR EXPRESSIONS
 
 
-### Match something that looks like an IP address
+#### Match something that looks like an IP address
 /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/
 /^(\d{1,3}\.){3}\d{1,3}$/
 
-### Test if a number is in range 0-255
+#### Test if a number is in range 0-255
 /^([0-9]|[0-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/
 
-### Match an IP address
+#### Match an IP address
 my $ip_part = qr|([0-9]|[0-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])|;
 if ($ip =~ /^($ip_part\.){3}$ip_part$/) {
  say "valid ip";
 }
 
-### Check if the string looks like an email address
+#### Check if the string looks like an email address
 /\S+@\S+\.\S+/
 
-### Check if the string is a decimal number
+#### Check if the string is a decimal number
 /^\d+$/
 /^[+-]?\d+$/
 /^[+-]?\d+\.?\d*$/
 
-### Check if the string is a hexadecimal number
+#### Check if the string is a hexadecimal number
 /^0x[0-9a-f]+$/i
 
-### Check if the string is an octal number
+#### Check if the string is an octal number
 /^0[0-7]+$/
 
-### Check if the string is binary
+#### Check if the string is binary
 /^[01]+$/
 
-### Check if a word appears twice in the string
+#### Check if a word appears twice in the string
 /(word).*\1/
 
-### Increase all numbers by one in the string
+#### Increase all numbers by one in the string
 $str =~ s/(\d+)/$1+1/ge
 
-### Extract HTTP User-Agent string from the HTTP headers
+#### Extract HTTP User-Agent string from the HTTP headers
 /^User-Agent: (.+)$/
 
-### Match printable ASCII characters
+#### Match printable ASCII characters
 /[ -~]/
 
-### Match unprintable ASCII characters
+#### Match unprintable ASCII characters
 /[^ -~]/
 
-### Match text between two HTML tags
+#### Match text between two HTML tags
 m|<strong>([^<]*)</strong>|
 m|<strong>(.*?)</strong>|
 
-### Replace all <b> tags with <strong>
+#### Replace all <b> tags with <strong>
 $html =~ s|<(/)?b>|<$1strong>|g
 
-### Extract all matches from a regular expression
+#### Extract all matches from a regular expression
 my @matches = $text =~ /regex/g;
 
 
 PERL TRICKS
 -----------
 
-### Print the version of a Perl module
+#### Print the version of a Perl module
 ```bash
 perl -MModule -le 'print $Module::VERSION'
 ```
