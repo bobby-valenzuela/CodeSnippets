@@ -1,3 +1,5 @@
+Accepts an array reference, a limit, and up to 3 column indexes. Will return array refeernce that has less elements than the limit and where the vals in the cols specified have been averaged to represent the original array as a whole
+
 sub averagify_array_from_ref_cols
 {
 	my $array_ref = $_[0];
