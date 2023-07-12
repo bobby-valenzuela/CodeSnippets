@@ -1,13 +1,22 @@
 # Perl One-Liners
 
-Source: https://nostarch.com/perloneliners
+Source: https://nostarch.com/perloneliners  
 Modified from: https://catonmat.net/ftp/perl1line.txt
 
 <br />
 
+# Table of Contents
+1. [File Spacing](#file-spacing)
+2. [Line Numbering](#line-numbering)
+3. [Calculations](#calculations)
+4. [String and Array Creattion](#string-creation-and-array-creation)
+5. [Text Conversion and Substitution](#text-conversion-and-substitution)
+6. [Selective Printing and Deleting of certain Lines](#selective-printing-and-deleting-of-certain-lines)
+7. [Handy Regular Expressions](#handy-regular-expressions)
 
-FILE SPACING 
-------------
+<br />
+
+# FILE SPACING
 
 ### Double space a file
 ```bash
@@ -154,8 +163,7 @@ perl -lpe '$\ = $. % 10 ? "\t" : "\n"'
 
 
 
-LINE NUMBERING
---------------
+# LINE NUMBERING
 
 ### Number all lines in a file
 ```bash
@@ -350,8 +358,8 @@ perl -nE '$a++ if /regex/; END {say $a+0}'
 
 
 
-CALCULATIONS
-------------
+# CALCULATIONS
+
 
 ### Check if a number is a prime
 ```bash
@@ -739,8 +747,8 @@ perl -le '$ip = 2130706433; $, = "."; print map { (($ip>>8*($_))&0xFF) } reverse
 
 
 
-STRING CREATION AND ARRAY CREATION
-----------------------------------
+# STRING CREATION AND ARRAY CREATION
+
 
 ### Generate and print the alphabet
 ```bash
@@ -931,8 +939,8 @@ perl -le '@array = ("a".."z"); print $#array + 1'
 
 
 
-TEXT CONVERSION AND SUBSTITUTION
---------------------------------
+# TEXT CONVERSION AND SUBSTITUTION
+
 
 ### ROT13 a string
 'y/A-Za-z/N-ZA-Mn-za-m/'
@@ -1199,8 +1207,8 @@ perl -pi -e 's/\x89\xD8\x48\x8B/\x90\x90\x48\x8B/g' file
 
 
 
-SELECTIVE PRINTING AND DELETING OF CERTAIN LINES
-------------------------------------------------
+# SELECTIVE PRINTING AND DELETING OF CERTAIN LINES
+
 
 ### Print the first line of a file (emulate head -1)
 ```bash
@@ -1504,8 +1512,8 @@ perl -alne 'print $F[0]'
 
 
 
-HANDY REGULAR EXPRESSIONS
--------------------------
+# HANDY REGULAR EXPRESSIONS
+
 
 ### Match something that looks like an IP address
 /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/
