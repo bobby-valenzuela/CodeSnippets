@@ -14,7 +14,7 @@ Server: MEOW
 
 Listen on netcat with:
 ```bash
-nl -l <port> < netcat-webserver
+nl -l <port> < index.html
 ```
 
 
