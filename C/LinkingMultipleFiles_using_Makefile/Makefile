@@ -3,6 +3,7 @@ CC        = gcc
 # define compiler flags
 CFLAGS    = -std=c11 -Wall -Wextra -fmax-errors=10
 # define library paths in addition to /usr/lib
+LIBS	  =
 LFLAGS    =
 # define the object files that this project needs
 OBJFILES  = program.o numchoose.o
@@ -18,7 +19,7 @@ all: $(MAIN)
 
 $(MAIN): $(OBJFILES)
 	# echo "Creating " $(MAIN)
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJFILES)
+	$(CC) $(CFLAGS) -o $(MAIN) $(OBJFILES) $(LFLAGS) $(LIBS)
 
 %.o: %.c
 	echo "Creating Object files..."
