@@ -27,3 +27,6 @@ $(MAIN): $(OBJFILES)
 clean:
 	echo "Cleaning Object files..."
 	rm -f $(OBJFILES) $(MAIN)
+
+launch: $(MAIN)
+	./$(MAIN)
