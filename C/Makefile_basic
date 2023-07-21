@@ -4,7 +4,7 @@ CC        = gcc
 CFLAGS    = -std=c11 -Wall -Wextra -fmax-errors=10
 # define library paths in addition to /usr/lib
 LFLAGS    =
-# define the object files that this project needs
+# define the object files that this project needs (even the object files that "make" has yet to create)
 OBJFILES  = program.o weatherstats.o
 # define name of executable file
 MAIN      = program
@@ -17,10 +17,13 @@ MAIN      = program
 all: $(MAIN)
 
 $(MAIN): $(OBJFILES)
+	echo "Creating " $(MAIN)
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJFILES)
 
 %.o: %.c
+	echo "Creating Object files..."
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-clean
+clean:
+	echo "Cleaning Object files..."
 	rm -f $(OBJFILES) $(MAIN)
