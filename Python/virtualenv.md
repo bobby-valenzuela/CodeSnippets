@@ -1,3 +1,5 @@
+# Creating a virtual Environment
+
 ## Method 1: Setup your virtual environment
 Make sure you have the virtual environment package installed:
 ```bash
@@ -27,7 +29,7 @@ source env/bin/activate
 
 <br />
 
-## Method 2]: Setup your virtual environment
+## Method 2: Setup your virtual environment
 _Make sure you have the virtual environment package installed_
 ```bash
 sudo apt install python3-dev libffi-dev build-essential virtualenvwrapper -y
@@ -41,7 +43,35 @@ Configure/Activate Virtual Envinronment Wrapper (source it)
 
 <br />
 
-Create new Virtual Environment
+# Working with requirements.txt file
+
+<br />
+
+## Creating a requirements.txt file
+Install pipreqs (used to create requirements.txt file)  
 ```bash
-mkvirtualenv --python=$(which python3) env # where ‘env’ is environment name
+pip3 install pipreqs
 ```
+
+<br />
+
+Create requirements.txt file
+```bash
+pipreqs .
+```
+
+<br />
+
+## Installing packages from a requirements.txt file
+
+```bash
+pip3 install -r requirements.txt
+```
+
+<br />
+
+Creating a virtual end and installing from requirements.txt in one go:
+```bash
+virtualenv env && source env/bin/activate && pip3 install -r requirements.txt
+```
+
